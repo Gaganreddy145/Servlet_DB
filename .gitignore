@@ -1,0 +1,42 @@
+# Compiled class files
+*.class
+
+# Eclipse project files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Eclipse specific
+.project
+.classpath
+.settings/
+
+# Build directories
+build/
+target/
+
+# Tomcat deployment
+/.deployment/
+/Servers/
+/wtpwebapps/
+
+# Java server logs
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore lib jars (optional, if you want clean repo)
+src/main/webapp/WEB-INF/lib/
+
+# IDE-specific
+.vscode/
+.idea/
+*.iml
+
+# Environment variables or credentials (if any)
+.env
