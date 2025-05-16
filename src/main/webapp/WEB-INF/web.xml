@@ -29,4 +29,14 @@
     <servlet-name>GetAll</servlet-name>
     <url-pattern>/GetAll</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>in.sp.backend.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
 </web-app>
