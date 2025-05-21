@@ -60,6 +60,8 @@ public class Confirm extends HttpServlet {
 			} else {
 				System.out.println("An error occured");
 			}
+			conn.close();
+			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
