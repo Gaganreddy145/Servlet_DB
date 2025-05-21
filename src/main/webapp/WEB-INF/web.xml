@@ -49,4 +49,24 @@
     <servlet-name>Delete</servlet-name>
     <url-pattern>/Delete</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Edit</display-name>
+    <servlet-name>Edit</servlet-name>
+    <servlet-class>in.sp.backend.Edit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Edit</servlet-name>
+    <url-pattern>/Edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Confirm</display-name>
+    <servlet-name>Confirm</servlet-name>
+    <servlet-class>in.sp.backend.Confirm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Confirm</servlet-name>
+    <url-pattern>/Confirm</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,27 +1,27 @@
 package in.sp.backend;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Servlet implementation class GetAll
+ * Servlet implementation class Edit
  */
-public class GetAll extends HttpServlet {
+public class Edit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public GetAll() {
+	public Edit() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,31 +36,18 @@ public class GetAll extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		try {
 			Connection conn = DbConnection.getConnection();
-			String s = "select * from users";
+			int id = Integer.parseInt(request.getParameter("id"));
+			String s = "select * from users where uid = ?";
 			PreparedStatement ps = conn.prepareStatement(s);
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			response.setContentType("text/html");
-			PrintWriter pw = response.getWriter();
-			pw.print("<table border='5'>");
-			pw.print("<tr>");
-			pw.print("<th>Id</th>");
-			pw.print("<th>Name</th>");
-			pw.print("<th>Department</th>");
-			pw.print("<th>Delete</th>");
-			pw.print("<th>Edit</th>");
-			pw.print("</tr>");
-			while (rs.next()) {
-				pw.print("<tr>");
-				pw.print("<td>" + rs.getInt(1) + "</td>");
-				pw.print("<td>" + rs.getString(2) + "</td>");
-				pw.print("<td>" + rs.getString(3) + "</td>");
-				pw.print("<td><a href='Delete?id=" + rs.getInt(1) + "'>Delete</a></td>");
-				pw.print("<td><a href='Edit?id=" + rs.getInt(1) + "'>Edit</a></td>");
-				pw.print("</tr>");
+			if (rs.next()) {
+				request.setAttribute("id", id);
+				request.setAttribute("uname", rs.getString(2));
+				request.setAttribute("dept", rs.getString(3));
+				RequestDispatcher rd = request.getRequestDispatcher("foredit.jsp");
+				rd.forward(request, response);
 			}
-			pw.print("</table>");
-			conn.close();
-			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
